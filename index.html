@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CUMBRES — Ropa Técnica de Alto Rendimiento</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;1,700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #0b1a2e;
+  --navy2:   #112540;
+  --navy3:   #1a3558;
+  --azul:    #1d5fa6;
+  --azul2:   #2472c2;
+  --naranja: #e85d17;
+  --naranja2:#c94c0e;
+  --blanco:  #f4f1ec;
+  --gris:    #7a8a9a;
+  --gris2:   #2e3f52;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--navy);
+  color: var(--blanco);
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--naranja); }
+
+/* ═══════════════════════════════
+   TICKER
+═══════════════════════════════ */
+.ticker {
+  background: var(--naranja);
+  padding: 9px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-track {
+  display: inline-flex;
+  gap: 0;
+  animation: tick 28s linear infinite;
+}
+.ticker-track span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--navy);
+  padding: 0 40px;
+}
+.ticker-track span::before {
+  content: '▸';
+  margin-right: 10px;
+  opacity: 0.5;
+}
+@keyframes tick {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ═══════════════════════════════
+   NAV
+═══════════════════════════════ */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  height: 64px;
+}
+
+.logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: var(--blanco);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo-dot {
+  width: 8px; height: 8px;
+  background: var(--naranja);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(244,241,236,0.5);
+  text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--blanco); }
+
+.nav-right { display: flex; align-items: center; gap: 16px; }
+
+.nav-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--blanco);
+  background: var(--naranja);
+  padding: 10px 22px;
+  text-decoration: none;
+  transition: background .2s;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 8px 100%);
+}
+.nav-btn:hover { background: var(--naranja2); }
+
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  overflow: hidden;
+}
+
+/* faixa diagonal de fundo */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(105deg, var(--navy) 50%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+  filter: brightness(.55) saturate(.85);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 60px 80px 80px;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.hero-tag-line {
+  width: 28px; height: 2px;
+  background: var(--naranja);
+}
+.hero-tag-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--naranja);
+}
+
+.hero-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(68px, 8vw, 118px);
+  font-weight: 700;
+  line-height: .88;
+  letter-spacing: -1px;
+  color: var(--blanco);
+  margin-bottom: 28px;
+}
+.hero-title .outline {
+  -webkit-text-stroke: 2px var(--blanco);
+  color: transparent;
+}
+.hero-title .accent {
+  color: var(--naranja);
+  display: block;
+}
+
+.hero-desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(244,241,236,.62);
+  max-width: 400px;
+  margin-bottom: 44px;
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--blanco);
+  padding: 16px 40px;
+  text-decoration: none;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%);
+  transition: background .2s, color .2s;
+  display: inline-block;
+}
+.cta-primary:hover {
+  background: var(--naranja);
+  color: var(--blanco);
+}
+
+.cta-ghost {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--blanco);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: .7;
+  transition: opacity .2s;
+}
+.cta-ghost:hover { opacity: 1; }
+
+.hero-stats {
+  display: flex;
+  gap: 36px;
+  margin-top: 60px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.stat { display: flex; flex-direction: column; }
+.stat-n {
+  font-family: 'Oswald', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--blanco);
+  line-height: 1;
+}
+.stat-n em { font-style: normal; color: var(--naranja); }
+.stat-l {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gris);
+  margin-top: 4px;
+}
+
+/* badge flotante */
+.hero-float {
+  position: absolute;
+  right: 5%;
+  bottom: 14%;
+  z-index: 3;
+  background: var(--naranja);
+  padding: 22px 28px;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  text-align: center;
+}
+.hero-float-pct {
+  font-family: 'Oswald', sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+  display: block;
+}
+.hero-float-txt {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: .7;
+}
+
+/* ═══════════════════════════════
+   CATEGORIES
+═══════════════════════════════ */
+.cats {
+  padding: 80px 60px;
+  background: var(--navy2);
+}
+
+.sec-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.sec-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--naranja);
+  margin-bottom: 8px;
+}
+
+.sec-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1;
+  color: var(--blanco);
+}
+
+.ver-todo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(244,241,236,.5);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(244,241,236,.25);
+  padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+  margin-bottom: 6px;
+}
+.ver-todo:hover { color: var(--naranja); border-color: var(--naranja); }
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+}
+
+.cat-card {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cat-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(.6) saturate(.9);
+  transition: transform .6s ease, filter .4s;
+}
+.cat-card:hover img {
+  transform: scale(1.1);
+  filter: brightness(.45) saturate(.8);
+}
+
+.cat-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 16px;
+  background: linear-gradient(to top, rgba(11,26,46,.85) 0%, transparent 55%);
+}
+
+.cat-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--blanco);
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.cat-qty {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(244,241,236,.5);
+  margin-top: 3px;
+}
+
+.cat-pill {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: var(--naranja);
+  color: var(--navy);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .3s, transform .3s;
+}
+.cat-card:hover .cat-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════
+   OFERTA BANNER
+═══════════════════════════════ */
+.oferta-banner {
+  background: var(--azul);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+}
+
+.oferta-banner::before {
+  content: '50%';
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Oswald', sans-serif;
+  font-size: 340px;
+  font-weight: 700;
+  color: rgba(255,255,255,.04);
+  pointer-events: none;
+  line-height: 1;
+  z-index: 0;
+}
+
+.oferta-left {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 70px 50px 70px 70px;
+}
+
+.oferta-tag {
+  display: inline-block;
+  background: var(--naranja);
+  color: var(--navy);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  margin-bottom: 22px;
+  align-self: flex-start;
+}
+
+.oferta-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(52px, 6vw, 86px);
+  font-weight: 700;
+  line-height: .9;
+  letter-spacing: -1px;
+  color: var(--blanco);
+  margin-bottom: 22px;
+}
+.oferta-title .outline {
+  -webkit-text-stroke: 2px rgba(255,255,255,.6);
+  color: transparent;
+  display: block;
+}
+
+.oferta-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(244,241,236,.65);
+  max-width: 400px;
+  margin-bottom: 36px;
+}
+
+.oferta-right {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 70px 70px 70px 30px;
+  gap: 16px;
+}
+
+.feat-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 20px 22px;
+  background: rgba(0,0,0,.18);
+  border-left: 3px solid var(--naranja);
+  transition: background .25s;
+}
+.feat-row:hover { background: rgba(0,0,0,.32); }
+
+.feat-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.feat-body {}
+.feat-tit {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--blanco);
+  margin-bottom: 4px;
+}
+.feat-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(244,241,236,.55);
+}
+
+/* ═══════════════════════════════
+   COUNTDOWN
+═══════════════════════════════ */
+.countdown {
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  padding: 52px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.cd-left { flex: 1; min-width: 220px; }
+.cd-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--naranja);
+  margin-bottom: 8px;
+}
+.cd-tit {
+  font-family: 'Oswald', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--blanco);
+  line-height: 1;
+}
+
+.cd-timer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cd-block {
+  background: var(--navy2);
+  border: 1px solid rgba(255,255,255,.08);
+  padding: 14px 20px;
+  text-align: center;
+  min-width: 78px;
+}
+.cd-num {
+  font-family: 'Oswald', sans-serif;
+  font-size: 46px;
+  font-weight: 700;
+  color: var(--blanco);
+  line-height: 1;
+  display: block;
+}
+.cd-lbl {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gris);
+  margin-top: 4px;
+}
+.cd-sep {
+  font-family: 'Oswald', sans-serif;
+  font-size: 36px;
+  color: var(--naranja);
+  margin-bottom: 14px;
+  opacity: .7;
+}
+
+.cd-btn {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--naranja);
+  padding: 18px 40px;
+  text-decoration: none;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%);
+  transition: background .2s;
+  flex-shrink: 0;
+  display: inline-block;
+}
+.cd-btn:hover { background: var(--naranja2); }
+
+/* ═══════════════════════════════
+   PRODUCTS
+═══════════════════════════════ */
+.products {
+  padding: 80px 60px;
+  background: #0d1b2e;
+}
+
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  margin-top: 36px;
+}
+
+.prod-card {
+  background: var(--navy2);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background .25s;
+}
+.prod-card:hover { background: var(--gris2); }
+
+.prod-img {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+.prod-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(.8);
+  transition: transform .5s ease, filter .4s;
+}
+.prod-card:hover .prod-img img {
+  transform: scale(1.07);
+  filter: brightness(.65);
+}
+
+.prod-badge {
+  position: absolute;
+  top: 0; left: 0;
+  background: var(--naranja);
+  color: var(--navy);
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 8px 14px;
+  line-height: 1;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+}
+
+.prod-info {
+  padding: 18px 20px 24px;
+}
+.prod-cat {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--naranja);
+  margin-bottom: 6px;
+}
+.prod-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--blanco);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.prod-prices {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.price-now {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--blanco);
+}
+.price-was {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  color: var(--gris);
+  text-decoration: line-through;
+}
+
+.prod-hover-btn {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: var(--naranja);
+  color: var(--navy);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 12px;
+  transform: translateY(100%);
+  transition: transform .3s ease;
+  text-decoration: none;
+  display: block;
+}
+.prod-card:hover .prod-hover-btn { transform: translateY(0); }
+
+/* ═══════════════════════════════
+   STRIP — BENEFICIOS
+═══════════════════════════════ */
+.strip {
+  background: var(--naranja);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 3px solid var(--naranja2);
+}
+
+.strip-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 28px;
+  border-right: 1px solid rgba(11,26,46,.2);
+  transition: background .2s;
+}
+.strip-item:last-child { border-right: none; }
+.strip-item:hover { background: var(--naranja2); }
+
+.strip-ico {
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.strip-tit {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  line-height: 1.2;
+}
+.strip-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  color: rgba(11,26,46,.65);
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════
+   HERO CTA FINAL
+═══════════════════════════════ */
+.final-cta {
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.final-bg {
+  position: absolute; inset: 0;
+}
+.final-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  filter: brightness(.3) saturate(.7);
+}
+
+/* faixa diagonal sobre a foto */
+.final-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, var(--navy) 28%, transparent 65%);
+}
+
+.final-content {
+  position: relative;
+  z-index: 2;
+  padding: 80px 80px;
+  max-width: 640px;
+}
+
+.final-content .sec-label { margin-bottom: 16px; display: block; }
+
+.final-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(52px, 7vw, 100px);
+  font-weight: 700;
+  line-height: .88;
+  letter-spacing: -1px;
+  color: var(--blanco);
+  margin-bottom: 24px;
+}
+.final-title .outline {
+  -webkit-text-stroke: 2px var(--blanco);
+  color: transparent;
+  display: block;
+}
+.final-title .acc { color: var(--naranja); display: block; }
+
+.final-desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(244,241,236,.65);
+  max-width: 440px;
+  margin-bottom: 40px;
+}
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer {
+  background: #080f1a;
+  border-top: 1px solid rgba(255,255,255,.05);
+  padding: 36px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: var(--blanco);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(244,241,236,.3);
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--blanco); }
+
+.footer-copy {
+  font-size: 11px;
+  color: rgba(244,241,236,.2);
+}
+
+/* ═══════════════════════════════
+   ANIMATIONS
+═══════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+@media (max-width: 1100px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-content { padding: 60px 28px; }
+  .hero-float { right: 24px; bottom: 8%; }
+  .hero-bg img { object-position: 80% center; }
+  .hero::after { background: linear-gradient(105deg, var(--navy) 60%, transparent 60%); }
+  .cats { padding: 60px 24px; }
+  .cat-grid { grid-template-columns: repeat(3, 1fr); }
+  .oferta-banner { grid-template-columns: 1fr; }
+  .oferta-left { padding: 60px 28px; }
+  .oferta-right { padding: 0 28px 60px; }
+  .countdown { padding: 40px 24px; }
+  .products { padding: 60px 24px; }
+  .prod-grid { grid-template-columns: repeat(2, 1fr); }
+  .strip { grid-template-columns: repeat(2, 1fr); }
+  .strip-item:nth-child(2) { border-right: none; }
+  .final-content { padding: 60px 28px; }
+  footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 640px) {
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-stats { gap: 24px; }
+  .hero-float { display: none; }
+  .cd-timer { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Hasta 50% OFF — Liquidación de temporada</span>
+    <span>Envío gratis a partir de $25.000</span>
+    <span>12 cuotas sin interés</span>
+    <span>Cambios sin costo</span>
+    <span>Retiro en tienda disponible</span>
+    <span>Hasta 50% OFF — Liquidación de temporada</span>
+    <span>Envío gratis a partir de $25.000</span>
+    <span>12 cuotas sin interés</span>
+    <span>Cambios sin costo</span>
+    <span>Retiro en tienda disponible</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo"><span class="logo-dot"></span>CUMBRES</a>
+  <ul class="nav-links">
+    <li><a href="#categorias">Categorías</a></li>
+    <li><a href="#ofertas">Ofertas</a></li>
+    <li><a href="#productos">Productos</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#" class="nav-btn">Ir a la tienda →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=1400&q=85" alt="Atleta en la montaña">
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-tag">
+      <div class="hero-tag-line"></div>
+      <span class="hero-tag-text">Colección Invierno 2025</span>
+    </div>
+
+    <h1 class="hero-title">
+      EMPUJÁ
+      <span class="outline">TUS</span>
+      <span class="accent">LÍMITES</span>
+    </h1>
+
+    <p class="hero-desc">
+      Indumentaria técnica de alto rendimiento para trail running, trekking y deportes en la montaña. Diseñada para los terrenos más exigentes de la Patagonia y los Andes.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#" class="cta-primary">Ver Ofertas</a>
+      <a href="#categorias" class="cta-ghost">Explorar colección →</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-n">50<em>%</em></span>
+        <span class="stat-l">Descuento máx.</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">600<em>+</em></span>
+        <span class="stat-l">Productos</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">48<em>h</em></span>
+        <span class="stat-l">Despacho</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-float">
+    <span class="hero-float-pct">50%</span>
+    <span class="hero-float-txt">OFF hoy</span>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="cats reveal" id="categorias">
+  <div class="sec-head">
+    <div>
+      <p class="sec-label">Explorá</p>
+      <h2 class="sec-title">COMPRÁ POR CATEGORÍA</h2>
+    </div>
+    <a href="#" class="ver-todo">Ver todo →</a>
+  </div>
+
+  <div class="cat-grid">
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1445308394109-4ec2920981b1?w=500&q=80" alt="Trail Running">
+      <div class="cat-overlay">
+        <div class="cat-name">Trail Running</div>
+        <div class="cat-qty">128 productos</div>
+      </div>
+      <div class="cat-pill">Más vendido</div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Parkas">
+      <div class="cat-overlay">
+        <div class="cat-name">Parkas</div>
+        <div class="cat-qty">64 productos</div>
+      </div>
+      <div class="cat-pill">Hasta 50% OFF</div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=500&q=80" alt="Calzado">
+      <div class="cat-overlay">
+        <div class="cat-name">Calzado</div>
+        <div class="cat-qty">92 productos</div>
+      </div>
+      <div class="cat-pill">Nuevo ingreso</div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=500&q=80" alt="Hiking">
+      <div class="cat-overlay">
+        <div class="cat-name">Hiking</div>
+        <div class="cat-qty">76 productos</div>
+      </div>
+      <div class="cat-pill">Oferta</div>
+    </div>
+    <div class="cat-card">
+      <img src="https://images.unsplash.com/photo-1491555103944-7c647fd857e6?w=500&q=80" alt="Ski">
+      <div class="cat-overlay">
+        <div class="cat-name">Ski &amp; Nieve</div>
+        <div class="cat-qty">48 productos</div>
+      </div>
+      <div class="cat-pill">Temporada</div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA BANNER -->
+<section class="oferta-banner reveal" id="ofertas">
+  <div class="oferta-left">
+    <span class="oferta-tag">⚡ Liquidación de Temporada</span>
+    <h2 class="oferta-title">
+      HASTA<br>
+      <span class="outline">50% OFF</span><br>
+      EN TODA LA<br>
+      COLECCIÓN
+    </h2>
+    <p class="oferta-desc">
+      Los mejores productos técnicos con descuentos increíbles. Stock limitado — los precios más bajos del año en indumentaria outdoor.
+    </p>
+    <a href="#" class="cta-primary">Ver todas las ofertas</a>
+  </div>
+
+  <div class="oferta-right">
+    <div class="feat-row">
+      <span class="feat-icon">🏔️</span>
+      <div class="feat-body">
+        <div class="feat-tit">Resistencia Extrema</div>
+        <div class="feat-desc">Materiales técnicos probados en las condiciones más duras de los Andes.</div>
+      </div>
+    </div>
+    <div class="feat-row">
+      <span class="feat-icon">🌧️</span>
+      <div class="feat-body">
+        <div class="feat-tit">Impermeabilidad Total</div>
+        <div class="feat-desc">Tecnología sellada que garantiza protección sin sacrificar transpirabilidad.</div>
+      </div>
+    </div>
+    <div class="feat-row">
+      <span class="feat-icon">♻️</span>
+      <div class="feat-body">
+        <div class="feat-tit">Materiales Reciclados</div>
+        <div class="feat-desc">Comprometidos con el medioambiente sin resignar alto rendimiento.</div>
+      </div>
+    </div>
+    <div class="feat-row">
+      <span class="feat-icon">🚚</span>
+      <div class="feat-body">
+        <div class="feat-tit">Despacho en 48 hs</div>
+        <div class="feat-desc">Envío rápido a todo el país. Cambios ilimitados sin costo adicional.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="countdown reveal">
+  <div class="cd-left">
+    <p class="cd-sub">Oferta por tiempo limitado</p>
+    <h3 class="cd-tit">¡APURATE, SE ACABA!</h3>
+  </div>
+  <div class="cd-timer">
+    <div class="cd-block">
+      <span class="cd-num" id="cd-h">08</span>
+      <span class="cd-lbl">Horas</span>
+    </div>
+    <span class="cd-sep">:</span>
+    <div class="cd-block">
+      <span class="cd-num" id="cd-m">34</span>
+      <span class="cd-lbl">Minutos</span>
+    </div>
+    <span class="cd-sep">:</span>
+    <div class="cd-block">
+      <span class="cd-num" id="cd-s">52</span>
+      <span class="cd-lbl">Segundos</span>
+    </div>
+  </div>
+  <a href="#" class="cd-btn">IR A LA TIENDA AHORA →</a>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products reveal" id="productos">
+  <div class="sec-head">
+    <div>
+      <p class="sec-label">Destacados</p>
+      <h2 class="sec-title">PRODUCTOS EN OFERTA</h2>
+    </div>
+    <a href="#" class="ver-todo">Ver todos →</a>
+  </div>
+
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1604644401890-0bd678c83788?w=500&q=80" alt="Campera">
+        <span class="prod-badge">-44%</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Hombre · Camperas</div>
+        <div class="prod-name">Campera Impermeable Trail Hombre</div>
+        <div class="prod-prices">
+          <span class="price-now">$89.995</span>
+          <span class="price-was">$159.990</span>
+        </div>
+      </div>
+      <a href="#" class="prod-hover-btn">Ver producto →</a>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80" alt="Zapatilla">
+        <span class="prod-badge">-50%</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Mujer · Calzado</div>
+        <div class="prod-name">Zapatilla Mujer Trail Outdry WP</div>
+        <div class="prod-prices">
+          <span class="price-now">$64.995</span>
+          <span class="price-was">$129.990</span>
+        </div>
+      </div>
+      <a href="#" class="prod-hover-btn">Ver producto →</a>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500&q=80" alt="Polar">
+        <span class="prod-badge">-30%</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Hombre · Polares</div>
+        <div class="prod-name">Polar Hombre Steens Mountain Full Zip</div>
+        <div class="prod-prices">
+          <span class="price-now">$38.493</span>
+          <span class="price-was">$54.990</span>
+        </div>
+      </div>
+      <a href="#" class="prod-hover-btn">Ver producto →</a>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1620188467120-5042ed1eb5da?w=500&q=80" alt="Botín">
+        <span class="prod-badge">-40%</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Hombre · Calzado</div>
+        <div class="prod-name">Botín Newton Ridge Waterproof</div>
+        <div class="prod-prices">
+          <span class="price-now">$71.994</span>
+          <span class="price-was">$119.990</span>
+        </div>
+      </div>
+      <a href="#" class="prod-hover-btn">Ver producto →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP BENEFICIOS -->
+<div class="strip">
+  <div class="strip-item">
+    <span class="strip-ico">🚚</span>
+    <div>
+      <div class="strip-tit">Envío gratis</div>
+      <div class="strip-sub">A partir de $25.000</div>
+    </div>
+  </div>
+  <div class="strip-item">
+    <span class="strip-ico">🔄</span>
+    <div>
+      <div class="strip-tit">Cambios sin costo</div>
+      <div class="strip-sub">Ilimitados, sin preguntas</div>
+    </div>
+  </div>
+  <div class="strip-item">
+    <span class="strip-ico">💳</span>
+    <div>
+      <div class="strip-tit">12 cuotas sin interés</div>
+      <div class="strip-sub">Todas las tarjetas</div>
+    </div>
+  </div>
+  <div class="strip-item">
+    <span class="strip-ico">🏪</span>
+    <div>
+      <div class="strip-tit">Retiro en tienda</div>
+      <div class="strip-sub">Gratis — listo en 24 hs</div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-bg">
+    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=85" alt="Montaña patagónica">
+  </div>
+  <div class="final-content reveal">
+    <span class="sec-label">No te lo pierdas</span>
+    <h2 class="final-title">
+      TU PRÓXIMA
+      <span class="outline">CUMBRE</span>
+      <span class="acc">TE ESPERA</span>
+    </h2>
+    <p class="final-desc">
+      Equipate con lo mejor en tecnología outdoor. Hasta 50% de descuento en la liquidación de temporada — solo mientras dure el stock.
+    </p>
+    <a href="#" class="cta-primary">IR A LA TIENDA AHORA →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span class="logo-dot"></span>CUMBRES</div>
+  <ul class="footer-links">
+    <li><a href="#">Categorías</a></li>
+    <li><a href="#">Ofertas</a></li>
+    <li><a href="#">Sobre nosotros</a></li>
+    <li><a href="#">Cambios y devoluciones</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Cumbres. Todos los derechos reservados.</span>
+</footer>
+
+<script>
+// COUNTDOWN
+let end = new Date();
+end.setHours(end.getHours() + 8);
+end.setMinutes(end.getMinutes() + 34);
+end.setSeconds(end.getSeconds() + 52);
+
+function tick() {
+  const d = end - new Date();
+  if (d <= 0) return;
+  document.getElementById('cd-h').textContent = String(Math.floor(d/3600000)).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(Math.floor(d%3600000/60000)).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(Math.floor(d%60000/1000)).padStart(2,'0');
+}
+setInterval(tick, 1000);
+tick();
+
+// REVEAL ON SCROLL
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
